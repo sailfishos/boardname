@@ -1,0 +1,10 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib/boardname
+includedir=${exec_prefix}/include/
+
+Name: libboardname
+Description: Identifies the current hardware platform
+Version: @@VERSION@@
+Libs: -L${libdir} -lboardname
+Cflags: -I${includedir}/boardname
