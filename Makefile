@@ -1,7 +1,7 @@
 VERSION = 0.5
 PROJECT = boardname
 
-CC = gcc
+CC := gcc
 OBJ = boardname.o
 LIBNAME = libboardname.so
 
@@ -10,12 +10,12 @@ LFLAGS= -shared -W1,-soname,$(LIBNAME).1 -o $(LIBNAME) $(OBJ) -lc
 
 DEPS = boardname.h
 
-all: boardname libboardname boardname.pc
+all: libboardname boardname.pc
 
-boardname: $(OBJ)
-	$(CC) $(CFLAGS) $@.c
+%.o: %.c $(DEPS) Makefile
+	$(CC) $(CFLAGS) -c -o $@ $<
 
-libboardname: $(OBJ)
+libboardname: $(OBJ) Makefile 
 	$(CC) -shared -W1,-soname,$@.so.1 -o $(LIBNAME) $(OBJ) -lc
 
 boardname.pc: boardname.pc.in
