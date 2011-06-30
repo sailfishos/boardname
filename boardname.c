@@ -26,9 +26,9 @@ char* getboardname()
 		return NULL; 
 	}
 	
-	buffer = malloc(sizeof(MAXSTRING)); 	
+	buffer = malloc(MAXSTRING); 	
 	while (!feof(fd))
-        	fgets(buffer,256,fd);
+        	fgets(buffer,MAXSTRING,fd);
 	
 	fclose(fd);
     
