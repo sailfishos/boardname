@@ -13,6 +13,6 @@
 #ifndef _BOARDNAME_H
 #define _BOARDNAME_H
 
-char* getboardname(); 
+char* getboardname(void);
 
-#endif /* boardname.h */ 
+#endif /* boardname.h */
