@@ -3,7 +3,7 @@ exec_prefix=${prefix}
 libdir=${exec_prefix}/lib/
 includedir=${exec_prefix}/include/
 
-Name: libboardname
+Name: boardname
 Description: Identifies the current hardware platform
 Version: @@VERSION@@
 Libs: -L${libdir} -lboardname
