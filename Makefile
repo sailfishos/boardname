@@ -1,4 +1,4 @@
-VERSION = 0.5
+VERSION = 0.6
 PROJECT = boardname
 
 CC := gcc
@@ -6,24 +6,24 @@ OBJ = boardname.o
 LIBNAME = libboardname.so
 SOVER = 1
 
-CFLAGS= -fPIC -g -c -Wall -Os -fstack-protector -D_FORTIFY_SOURCE=2 -Wformat -fno-common \
-	-Wimplicit-function-declaration  -Wimplicit-int
-LFLAGS= -shared -W1,-soname,$(LIBNAME).$(SOVER) -o $(LIBNAME).$(SOVER) $(OBJ) -lc
+CFLAGS= -fPIC -g -c -Wall -Os -fstack-protector -D_FORTIFY_SOURCE=2 -Wformat \
+	-fno-common -Wimplicit-function-declaration  -Wimplicit-int
+LDFLAGS = -Wl,-soname,$(LIBNAME).$(SOVER) -o $(LIBNAME).$(SOVER) -lc
 
 DEPS = boardname.h
 
-all: libboardname boardname.pc
+all: libboardname.so.$(SOVER) boardname.pc
 
 %.o: %.c $(DEPS) Makefile
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-libboardname: $(OBJ) Makefile 
-	$(CC) -shared -W1,-soname,$@.so.1 -o $(LIBNAME).$(SOVER) $(OBJ) -lc
+libboardname.so.$(SOVER): $(OBJ) Makefile
+	$(CC) -shared $(LDFLAGS) -o $@ $(OBJ)
 
 boardname.pc: boardname.pc.in
 	sed 's/@@VERSION@@/$(VERSION)/' < boardname.pc.in > boardname.pc
 
-install: libboardname
+install: libboardname.so.$(SOVER) boardname.pc
 	install -D -m0644 $(LIBNAME).$(SOVER) $(DESTDIR)/usr/lib/$(LIBNAME).$(SOVER)
 	ln -sf $(LIBNAME).$(SOVER) $(DESTDIR)/usr/lib/$(LIBNAME)
 	install -D -m0644 $(DEPS) $(DESTDIR)/usr/include/$(PROJECT)/$(DEPS)
@@ -33,5 +33,5 @@ clean:
 	rm -rf *.o *.so* *.pc
 dist:
 	git tag v$(VERSION)
-	git archive --format=tar --prefix="$(PROJECT)-$(VERSION)/" v$(VERSION) | \
-                gzip > $(PROJECT)-$(VERSION).tar.gz
+	git archive --format=tar --prefix="$(PROJECT)-$(VERSION)/" \
+	    v$(VERSION) | gzip > $(PROJECT)-$(VERSION).tar.gz
