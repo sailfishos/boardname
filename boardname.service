@@ -1,0 +1,16 @@
+#
+# Initialize the per-board vector
+#
+
+[Unit]
+Description=Apply Boardname Variables
+DefaultDependencies=no
+After=remount-rootfs.service
+Before=sysinit.target
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/boardname
+
+[Install]
+WantedBy=basic.target

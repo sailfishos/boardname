@@ -1,0 +1,40 @@
+* Mon Sep 26 2011 Marko Saukko <marko.saukko@cybercom.com> - 0.7
+- Added After=remount-rootfs.service to .service file to fix BMC#23366
+
+* Wed Jul 27 2011 Auke Kok <auke-jan.h.kok@intel.com> - 0.7
+- Fix boardname.pc
+- (BMC#21974) Not passing proper LDFLAGS to boardname.
+
+* Tue Jul 26 2011 Auke Kok <auke-jan.h.kok@intel.com> - 0.5
+- Fix libboardname.so installation path, make it a .so.1.
+
+* Thu Jun 30 2011 Chris Ferron <chris.e.ferron@linux.intel.com> - 0.4
+- updated to Makefile to allow arm builds to work
+
+* Wed Jun 08 2011 Chris Ferron <chris.e.ferron@linux.intel.com> - 0.4
+- Simple check in of added library to provide a simple library to 
+   get the platform name. 
+
+Wed May 25 2011 Chris Ferron <chris.e.ferron@linux.intel.com> - 0.3
+- Updated spec file to change systemctl as a requires to the package systemd.
+
+
+* Mon May 02 2011 Chris Ferron <chris.e.ferron@linux.intel.com> - 0.3
+- FEA#16109 - [FEA] Implement SystemD as MeeGo init provide
+- Updated the boardname package to be usable by systemd as 
+  needed to implement systemd as the init provider of MeeGo. 
+  For this a systemd boardname.service definition file was added 
+  and installed that will run the boardname script once and be tracked. 
+  all other init references were removed, as MeeGo's init provider 
+  is systemd.  
+
+* Fri Feb 25 2011 Auke Kok <auke-jan.h.kok@intel.com> - 0.3
+- (BMC#13647) Append \n to boardname file
+- (BMC#13894) Don't overwrite boardname with override on every run (performance)
+
+* Tue Feb 15 2011 Auke Kok <auke-jan.h.kok@intel.com> - 0.1
+- (BMC#12701) - switch arm) to arm*).
+
+* Fri Feb 11 2011 Auke Kok <auke-jan.h.kok@intel.com> - 0.1
+- Initial checkin. (BMC#12701).
+
