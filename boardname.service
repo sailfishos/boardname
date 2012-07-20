@@ -5,7 +5,7 @@
 [Unit]
 Description=Apply Boardname Variables
 DefaultDependencies=no
-After=remount-rootfs.service
+After=systemd-remount-fs.service
 Before=sysinit.target
 ConditionPathExists=!/etc/boardname
 

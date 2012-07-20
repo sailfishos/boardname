@@ -22,6 +22,7 @@ Provides:
 Requires:
     - coreutils
     - grep
+    - systemd >= 185
 Files:
     - "/sbin/boardname"
     - "%{_libdir}/libboardname.so.1"

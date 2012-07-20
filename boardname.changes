@@ -1,3 +1,6 @@
+* Fri Jul 20 2012 Marko Saukko <marko.saukko@jollamobile.com> - 0.7
+- Service name changed from remount-rootfs.service to systemd-remount-fs.service
+
 * Wed Jan 04 2012 Marko Saukko <marko.saukko@cybercom.cmo> - 0.7
 - Added ConditionPathExists=!/etc/boardname to .service file to disable start
   when not needed.
