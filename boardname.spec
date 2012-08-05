@@ -25,7 +25,6 @@ Requires(post): /sbin/ldconfig
 Requires(post): systemd
 Requires(postun): /sbin/ldconfig
 Requires(postun): systemd
-Provides:   libboardname.so.1
 
 %description
 This tool allows multiple applications to determine board/skew specific
@@ -71,6 +70,7 @@ mkdir -p %{buildroot}/%{_lib}/systemd/system/sysinit.target.wants
 install -D -m 0644 %SOURCE1 ${RPM_BUILD_ROOT}/%{_lib}/systemd/system/
 mkdir -p %{buildroot}/%{_lib}/systemd/system/sysinit.target.wants/
 ln -s ../boardname.service %{buildroot}/%{_lib}/systemd/system/sysinit.target.wants/boardname.service
+chmod +x %{buildroot}/%{_libdir}/*.so*
 # << install post
 
 

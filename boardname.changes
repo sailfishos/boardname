@@ -1,3 +1,6 @@
+* Sun Aug 05 2012 Seppo Yliklaavu <seppo.yliklaavu@gmail.com> - 0.7
+- Fixes MER#127 : /usr/lib/libboardname.so.1 is not stripped properly
+
 * Fri Jul 20 2012 Marko Saukko <marko.saukko@jollamobile.com> - 0.7
 - Service name changed from remount-rootfs.service to systemd-remount-fs.service
 

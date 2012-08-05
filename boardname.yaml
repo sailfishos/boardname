@@ -17,8 +17,6 @@ Configure: none
 Builder: make
 License: GPLv2
 URL: http://meego.gitorious.org/meego-os-base/boardname
-Provides:
-    - libboardname.so.1
 Requires:
     - coreutils
     - grep
