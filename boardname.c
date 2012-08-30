@@ -14,23 +14,26 @@
 #include "stdlib.h"
 
 #define MAXSTRING 256
+#define BOARDNAME_FILE "/etc/boardname"
 
 char* getboardname()
 {
 	char *buffer;
 	FILE *fd;
 
-	fd = fopen("/etc/boardname", "r");
+	fd = fopen(BOARDNAME_FILE, "r");
 	if (!fd) {
-		fprintf(stderr, "Unable to open /etc/boardname.\n");
+		fprintf(stderr, "Unable to open %s.\n", BOARDNAME_FILE);
 
 		return NULL;
 	}
 
 	buffer = malloc(MAXSTRING);
-	while (!feof(fd))
-		if (fgets(buffer, MAXSTRING, fd) <= 0)
-			fprintf(stderr, "Unable to read from /etc/boardname.\n");
+	if (fgets(buffer, MAXSTRING, fd) == NULL) {
+		fprintf(stderr, "Unable to read from %s.\n", BOARDNAME_FILE);
+		free(buffer);
+		buffer = NULL;
+	}
 
 	fclose(fd);
 
