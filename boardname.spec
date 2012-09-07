@@ -17,6 +17,7 @@ URL:        http://meego.gitorious.org/meego-os-base/boardname
 Source0:    boardname-%{version}.tar.gz
 Source1:    boardname.service
 Source100:  boardname.yaml
+Patch0:     0001-fix-boardname-falsely-printing-error-message.patch
 Requires:   coreutils
 Requires:   grep
 Requires:   systemd >= 185
@@ -46,6 +47,8 @@ Development files for boardname
 %prep
 %setup -q -n %{name}-%{version}
 
+# 0001-fix-boardname-falsely-printing-error-message.patch
+%patch0 -p1
 # >> setup
 # << setup
 

@@ -13,6 +13,9 @@ Sources    :
     - boardname-%{version}.tar.gz
     - boardname.service
 
+Patches:
+    - 0001-fix-boardname-falsely-printing-error-message.patch
+
 Configure: none
 Builder: make
 License: GPLv2

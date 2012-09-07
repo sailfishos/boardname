@@ -1,3 +1,6 @@
+* Thu Aug 30 2012 Juho Hamalainen <juho.hamalainen@tieto.com> - 0.7
+- libboardname no longer falsely prints error message.
+
 * Sun Aug 05 2012 Seppo Yliklaavu <seppo.yliklaavu@gmail.com> - 0.7
 - Fixes MER#127 : /usr/lib/libboardname.so.1 is not stripped properly
 
