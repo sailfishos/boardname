@@ -15,6 +15,7 @@ Sources    :
 
 Patches:
     - 0001-fix-boardname-falsely-printing-error-message.patch
+    - 0002-boardname-add-x86_64.patch
 
 Configure: none
 Builder: make

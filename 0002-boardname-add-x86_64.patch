@@ -1,0 +1,23 @@
+--- a/boardname	2011-07-28 00:02:20.000000000 +0300
++++ b/boardname	2014-01-09 15:37:01.713439907 +0200
+@@ -42,6 +42,20 @@
+ 		fi
+ 
+ 		;;
++	x86_64)
++		B_ARCH="ia64"
++
++		B_VENDOR=`cat /sys/devices/virtual/dmi/id/board_vendor`
++		B_NAME=`cat /sys/devices/virtual/dmi/id/board_name`
++		B_VERSION=`cat /sys/devices/virtual/dmi/id/board_version`
++
++		if [ -z "$B_VERSION" -o "$B_VERSION" == "Not Available" ]; then
++			B_ID="${B_VENDOR}_${B_NAME}"
++		else
++			B_ID="${B_VENDOR}_${B_NAME}_${B_VERSION}"
++		fi
++
++		;;
+ 	arm*)
+ 		B_ARCH="arm"
+ 
