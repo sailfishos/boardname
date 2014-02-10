@@ -53,17 +53,17 @@ chmod +x %{buildroot}/%{_libdir}/*.so*
 
 %preun
 if [ "$1" -eq 0 ]; then
-systemctl stop boardname.service
+systemctl stop boardname.service || :
 fi
 
 %post
 /sbin/ldconfig
-systemctl daemon-reload
-systemctl reload-or-try-restart boardname.service
+systemctl daemon-reload || :
+systemctl reload-or-try-restart boardname.service || :
 
 %postun
 /sbin/ldconfig
-systemctl daemon-reload
+systemctl daemon-reload || :
 
 %files
 %defattr(-,root,root,-)
