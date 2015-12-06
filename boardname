@@ -45,8 +45,13 @@ case `uname -m` in
 	arm*)
 		B_ARCH="arm"
 
-		B_NAME=`grep -e "Hardware.*\:" /proc/cpuinfo | cut -b "12-"`
-		B_REV=`grep -e "Revision.*\:" /proc/cpuinfo | cut -b "12-"`
+		#use model reported by Device Tree if available
+		if [ -e /proc/device-tree/model ]; then
+			B_NAME=`cat /proc/device-tree/model`
+		else
+			B_NAME=`grep -e "Hardware.*\:" /proc/cpuinfo | cut -b "12-"`
+			B_REV=`grep -e "Revision.*\:" /proc/cpuinfo | cut -b "12-"`
+		fi
 
 		if [ -z "$B_REV" ]; then
 			B_ID="${B_NAME}"
